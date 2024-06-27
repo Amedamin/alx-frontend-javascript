@@ -5,18 +5,13 @@ export default class Building {
     }
 
     this._sqft = sqft;
-
-    if (new.target === Building && this.constructor.prototype.evacuationWarningMessage
-      === Building.prototype.evacuationWarningMessage) {
-      throw new Error('Abstract class "Building" cannot be instantiated directly');
-    }
   }
 
   get sqft() {
     return this._sqft;
   }
 
-  evacuationWarningMessage() {
-    throw new Error('Method evacuationWarningMessage must be implemented');
+  static evacuationWarningMessage() {
+    throw new Error('Class extending Building must override evacuationWarningMessage');
   }
 }
