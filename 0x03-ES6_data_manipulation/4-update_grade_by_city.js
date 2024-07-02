@@ -3,15 +3,15 @@ export default function updateStudentGradeByCity(
   city,
   newGrades,
 ) {
-  const F = students.filter(
+  const filterStudents = students.filter(
     (student) => student.location === city,
   );
 
-  const G = F.map(
+  const gradeStudents = filterStudents.map(
     (student) => {
-      for (const Grad of newGrades) {
-        if (student.id === Grad.studentId) {
-          student.grade = Grad.grade;
+      for (const gradeInfo of newGrades) {
+        if (student.id === gradeInfo.studentId) {
+          student.grade = gradeInfo.grade;
         }
       }
       if (student.grade === undefined) {
@@ -21,5 +21,5 @@ export default function updateStudentGradeByCity(
     },
   );
 
-  return G;
+  return gradeStudents;
 }
